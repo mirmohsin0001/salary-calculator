@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salary Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Salary Calculator</h1>
+      <p>(7th Pay Commission)</p>
+
+      <br />
+
+      <p>Enter Pay Band (Level):</p>
+      <input type="value" id="level" />
+      <button id="btn">Calculate</button>
+
+      <br />
+      <br />
+      <!-- <hr /> -->
+
+      <p id="message">Invalid Pay Band!</p>
+
+      <section id="components">
+        <p>Basic Pay: <span id="basicId"></span></p>
+        <p>DA: <span id="daId"></span></p>
+        <p>HRA: <span id="hraId"></span></p>
+        <p>TA: <span id="taId"></span></p>
+        <p>DA on TA: <span id="daOnTaId"></span></p>
+        <p class="gross">Gross Pay: <span id="grossId"></span></p>
+
+        <br />
+
+        <p>NPS: <span id="npsId"></span></p>
+        <p class="net">Net Pay: <span id="netId"></span></p>
+        <br /><br /><br /><br><br>
+  
+        <h3>Note:</h3>
+  
+        <p>
+          DA calculated @ 44%, HRA @ 9% (for Z cities), TA for lower TPTA cities
+          and NPS @ 10% of (basic + DA).
+        </p>
+  
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      </section>
+
+      <script src="main.js"></script>
+    </main>
+  </body>
+</html>

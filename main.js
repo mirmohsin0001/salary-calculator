@@ -2,6 +2,8 @@ window.onload = () => {
   const button = document.getElementById("btn");
 
   button.addEventListener("click", calcSalary);
+  document.getElementById("components").style.display = 'none';
+  document.getElementById("message").style.display = 'none';
 };
 
 function calcSalary() {

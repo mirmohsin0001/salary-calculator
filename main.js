@@ -1,167 +1,55 @@
 window.onload = () => {
-  const button = document.getElementById("btn");
+  const form = document.querySelector("form");
 
-  button.addEventListener("click", calcSalary);
-  document.getElementById("components").style.display = 'none';
-  document.getElementById("message").style.display = 'none';
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+    calc(); // Call your calculation function
+  });
+
+  // Get the current year and update the footer
+  const currentYear = new Date().getFullYear();
+  const yearSpan = document.getElementById("copyrightYear");
+  if (yearSpan) {
+    yearSpan.textContent = currentYear;
+  }
 };
 
-function calcSalary() {
-  const level = parseInt(document.getElementById("level").value);
+function calc() {
+  const values = document.getElementById("payband").value.split(",");
+  const numberOfYears = document.getElementById("numberOfYearsId").value;
 
-  const basicId = document.getElementById("basicId");
-  const daId = document.getElementById("daId");
-  const hraId = document.getElementById("hraId");
-  const taId = document.getElementById("taId");
-  const daOnTaId = document.getElementById("daOnTaId");
-  const grossId = document.getElementById("grossId");
-  const npsId = document.getElementById("npsId");
-  const netId = document.getElementById("netId");
+  const startingBasic = parseInt(values[0]);
+  const ta = parseInt(values[1]);
 
-  var basicPay = 0;
-  var ta = 0;
+  let basic = startingBasic;
 
-  switch (level) {
-    case 1: {
-      basicPay = 18000;
-      ta = 900;
-      break;
-    }
-
-    case 2: {
-      basicPay = 19900;
-      ta = 900;
-      break;
-    }
-
-    case 3: {
-      basicPay = 21700;
-      ta = 1800;
-      break;
-    }
-
-    case 4: {
-      basicPay = 25500;
-      ta = 1800;
-      break;
-    }
-
-    case 5: {
-      basicPay = 29200;
-      ta = 1800;
-      break;
-    }
-
-    case 6: {
-      basicPay = 35400;
-      ta = 1800;
-      break;
-    }
-
-    case 7: {
-      basicPay = 44900;
-      ta = 1800;
-      break;
-    }
-
-    case 8: {
-      basicPay = 47600;
-      ta = 1800;
-      break;
-    }
-
-    case 9: {
-      basicPay = 53100;
-      ta = 3600;
-      break;
-    }
-
-    case 10: {
-      basicPay = 56100;
-      ta = 3600;
-      break;
-    }
-
-    case 11: {
-      basicPay = 67700;
-      ta = 3600;
-      break;
-    }
-
-    case 12: {
-      basicPay = 78800;
-      ta = 3600;
-      break;
-    }
-
-    case 13: {
-      basicPay = 118500;
-      ta = 3600;
-      break;
-    }
-
-    case 14: {
-      basicPay = 144200;
-      ta = 3600;
-      break;
-    }
-
-    case 15: {
-      basicPay = 182200;
-      ta = 3600;
-      break;
-    }
-
-    case 16: {
-      basicPay = 205400;
-      ta = 3600;
-      break;
-    }
-
-    case 17: {
-      basicPay = 225000;
-      ta = 3600;
-      break;
-    }
-
-    case 18: {
-      basicPay = 250000;
-      ta = 3600;
-      break;
-    }
-
-    default: {
-      console.log("Case: default case");
-      break;
-    }
+  for (let i = 0; i < numberOfYears; i++) {
+    basic = basic + basic * 0.03;
   }
 
-  if (basicPay == 0) {
-    
+  basic = Math.round(basic / 100) * 100;
 
-    document.getElementById("components").style.display = 'none';
-    document.getElementById("message").style.display = 'block';
-  } else {
+  document.getElementById("basicId").innerHTML = basic;
 
-    const da = basicPay * 0.44;
-    const hra = basicPay * 0.09;
-    const daOnTa = ta * 0.44;
-    const gross = basicPay + da + hra + ta + daOnTa;
-    const nps = (basicPay + da) * 0.1;
-    const net = gross - nps;
+  const da = basic * 0.46;
+  document.getElementById("daId").innerHTML = da;
 
-    document.getElementById("components").style.display = 'block';
-    document.getElementById("message").style.display = 'none';
+  const hra = basic * 0.09;
+  document.getElementById("hraId").innerHTML = hra;
 
-    basicId.innerHTML = basicPay;
-    daId.innerHTML = da;
-    hraId.innerHTML = hra;
-    taId.innerHTML = ta;
-    daOnTaId.innerHTML = daOnTa;
-    grossId.innerHTML = gross;
-    npsId.innerHTML = nps.toFixed(0);
-    netId.innerHTML = net.toFixed(0);
+  document.getElementById("taId").innerHTML = ta;
 
-    console.log(basicPay, da, hra, ta, daOnTa, gross, nps, net);
-  }
+  const daOnTa = ta * 0.46;
+  document.getElementById("daOnTaId").innerHTML = daOnTa;
+
+  const gross = basic + da + hra + ta + daOnTa;
+  document.getElementById("grossId").innerHTML = gross;
+
+  const nps = (basic + da) * 0.1;
+  document.getElementById("npsId").innerHTML = nps.toFixed(0);
+
+  const net = gross - nps;
+  document.getElementById("netId").innerHTML = net.toFixed(0);
+
+  document.getElementById("salaryComponents").style.display = "block";
 }

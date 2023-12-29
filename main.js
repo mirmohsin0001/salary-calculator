@@ -3,7 +3,7 @@ window.onload = () => {
 
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
-    calc(); // Call your calculation function
+    calc(); // Call calculation function
   });
 
   // Get the current year and update the footer
@@ -25,9 +25,9 @@ function calc() {
 
   for (let i = 0; i < numberOfYears; i++) {
     basic = basic + basic * 0.03;
+    basic = Math.round(basic / 100) * 100;
   }
 
-  basic = Math.round(basic / 100) * 100;
 
   document.getElementById("basicId").innerHTML = basic;
 
@@ -41,8 +41,11 @@ function calc() {
 
   const daOnTa = ta * 0.46;
   document.getElementById("daOnTaId").innerHTML = daOnTa;
+  
+  const ma = 300;
+  document.getElementById("maId").innerHTML = ma;
 
-  const gross = basic + da + hra + ta + daOnTa;
+  const gross = basic + da + hra + ta + daOnTa + ma;
   document.getElementById("grossId").innerHTML = gross;
 
   const nps = (basic + da) * 0.1;

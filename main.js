@@ -24,8 +24,12 @@ function calc() {
   let basic = startingBasic;
 
   for (let i = 0; i < numberOfYears; i++) {
-    basic = basic + basic * 0.03;
-    basic = Math.round(basic / 100) * 100;
+    basicTemp = basic + basic * 0.03;
+    basicTemp = Math.round(basicTemp / 100) * 100;
+    if (basicTemp > 250000) {
+      break;
+    }
+    basic = basicTemp;
   }
 
 

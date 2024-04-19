@@ -43,7 +43,7 @@ function calc() {
 
   document.getElementById("taId").innerHTML = ta;
 
-  const daOnTa = ta * 0.46;
+  const daOnTa = ta * 0.50;
   document.getElementById("daOnTaId").innerHTML = daOnTa;
   
   const ma = 300;

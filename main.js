@@ -35,7 +35,7 @@ function calc() {
 
   document.getElementById("basicId").innerHTML = basic;
 
-  const da = basic * 0.50;
+  const da = basic * 0.58;
   document.getElementById("daId").innerHTML = da;
 
   const hra = basic * 0.09;
@@ -43,7 +43,7 @@ function calc() {
 
   document.getElementById("taId").innerHTML = ta;
 
-  const daOnTa = ta * 0.50;
+  const daOnTa = ta * 0.58;
   document.getElementById("daOnTaId").innerHTML = daOnTa;
   
   const ma = 300;
